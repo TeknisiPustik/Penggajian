@@ -1,23 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <img src="<?= base_url('assets/image/logo.jfif') ?>" alt="foto">
-
-    <div class="img">
-        <img src="<?php echo base_url(); ?>assets/image/logo.jfif">
-    </div>
-</body>
-
-</html> -->
-
 <!DOCTYPE html>
 <html>
 
@@ -37,7 +17,7 @@
             <img src="<?php echo base_url(); ?>assets/image/logo.jfif">
         </div>
         <div class="login-content">
-            <form class="user" method="POST" action="">
+            <form class="user" method="POST" action="<?php echo base_url('welcome') ?>">
 
                 <h2 class="title">APLIKASI PENGGAJIAN</h2>
 
@@ -48,7 +28,9 @@
                     <div class="div">
                         <h5>Username </h5>
                         <input type="text" class="input" name="username">
+
                     </div>
+                    <?php echo form_error('username', '<div class="text-small text-danger"></div>') ?>
                 </div>
                 <div class="input-div pass">
                     <div class="i">
@@ -57,9 +39,11 @@
                     <div class="div">
                         <h5>Password </h5>
                         <input type="password" class="input" name="password">
+                        <h5><?php echo form_error('password', '<div class="text-small text-danger"></div>') ?></h5>
                     </div>
                 </div>
-                <input type="submit" class="btn" value="Login">
+                <button type="submit" class="btn" value="Login">Login</button>
+
             </form>
         </div>
     </div>
