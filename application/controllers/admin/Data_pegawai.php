@@ -34,31 +34,6 @@ class Data_pegawai extends CI_Controller {
 
 	public function saveData()
 	{
-			$nik			= $this->input->post('nik');
-			$nama_pegawai	= $this->input->post('nama_pegawai');
-			$username		= $this->input->post('username');
-			$password		= md5($this->input->post('password'));
-			$jenis_kelamin	= $this->input->post('jenis_kelamin');
-			$jabatan		= $this->input->post('jabatan');
-			$tanggal_masuk	= $this->input->post('tanggal_masuk');
-			$status			= $this->input->post('status');
-			$hak_akses		= $this->input->post('hak_akses');
-			// $photo			= $_FILES['photo']['name'];
-
-
-			$data = array(
-				'nik' 			=> $nik,
-				'nama_pegawai' 	=> $nama_pegawai,
-				'username' 		=> $username,
-				'password' 		=> $password,
-				'jenis_kelamin' => $jenis_kelamin,
-				'jabatan' 		=> $jabatan,
-				'tanggal_masuk' => $tanggal_masuk,
-				'status' 		=> $status,
-				'hak_akses' 	=> $hak_akses,
-				// 'photo' 		=> $photo,
-			);
-
-			$this->pegawai->add_data($data, 'data_pegawai');
+			
 	}
 }
