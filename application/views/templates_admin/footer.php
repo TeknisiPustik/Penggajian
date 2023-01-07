@@ -1,8 +1,8 @@
  <!-- Footer -->
- <footer class="sticky-footer bg-white">
+ <footer class="sticky-footer bg-white fixed-bottom">
      <div class="container my-auto">
          <div class="copyright text-center my-auto">
-             <span>Copyright &copy; Your Website 2021</span>
+             <span>Copyright &copy; PT X Y Z</span>
          </div>
      </div>
  </footer>
@@ -37,10 +37,6 @@
          </div>
      </div>
  </div>
-
-
-
-
 
  <!-- Bootstrap core JavaScript-->
  <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
