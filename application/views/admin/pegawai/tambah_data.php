@@ -16,8 +16,6 @@
 						<input type="number" class="form-control" id="nik" placeholder="Nik" name="nik">
 						<small id="nik" class="form-text text-muted"><?php echo form_error('nik', '<div class="text-small text-danger"> </div>') ?></small>
 					</div>
-					<!-- <div class="col "><?php echo form_error('nik', '<div class="text-small text-danger"> </div>') ?></div> -->
-
 				</div>
 				<div class="form-group row mb-5">
 					<label for="nama_pegawai" class="col-sm-2 col-form-label">Nama Lengkap</label>

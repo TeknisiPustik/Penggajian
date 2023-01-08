@@ -69,3 +69,11 @@ Acknowledgement
 
 The CodeIgniter team would like to thank EllisLab, all the
 contributors to the CodeIgniter project and you, the CodeIgniter user.
+
+cara push 
+
+- git status (cek aktif pada branch apa)
+- git add .
+- git pull origin
+- git commit -m ""
+- git push origin master

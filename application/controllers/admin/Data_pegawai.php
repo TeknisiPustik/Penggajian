@@ -104,8 +104,8 @@ class Data_pegawai extends CI_Controller {
 
 		$this->load->view('templates_admin/header', $data);
 		$this->load->view('templates_admin/sidebar');
-		$this->load->view('admin/pegawai/update_dataPegawai', $data);
-		$this->load->view('templats_admin/footer');
+		$this->load->view('admin/pegawai/update_data', $data);
+		$this->load->view('templates_admin/footer');
 	}
 
 	public function update_data_aksi()
