@@ -154,7 +154,6 @@ class Data_pegawai extends CI_Controller {
 
 			$where = array(
 				'id_pegawai' => $id
-
 			);
 
 			$this->ModelPenggajian->update_data('data_pegawai', $data, $where);

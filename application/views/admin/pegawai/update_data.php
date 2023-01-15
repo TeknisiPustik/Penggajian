@@ -108,7 +108,7 @@
 						<label for="" class="col-sm-2 col-form-label"></label>
 						<div class="col-sm-10">
 							<button id="simpan" class="btn btn-primary">Simpan</button>
-							<a class="btn btn-warning" href="<?php echo site_url('admin/data_pegawai') ?>">kembali</a>
+							<a class="btn btn-warning ml-3" href="<?php echo site_url('admin/data_pegawai') ?>">kembali</a>
 						</div>
 					</div>
 				</form>
