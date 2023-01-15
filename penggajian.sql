@@ -1,58 +1,48 @@
--- phpMyAdmin SQL Dump
--- version 5.0.3
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Jan 01, 2021 at 07:06 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+/*
+SQLyog Ultimate v13.1.1 (64 bit)
+MySQL - 10.4.24-MariaDB : Database - db_penggajian
+*********************************************************************
+*/
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+/*!40101 SET NAMES utf8 */;
 
+/*!40101 SET SQL_MODE=''*/;
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`db_penggajian` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 
---
--- Database: `penggajian`
---
+USE `db_penggajian`;
 
--- --------------------------------------------------------
+/*Table structure for table `data_jabatan` */
 
---
--- Table structure for table `data_jabatan`
---
+DROP TABLE IF EXISTS `data_jabatan`;
 
 CREATE TABLE `data_jabatan` (
-  `id_jabatan` int(11) NOT NULL,
+  `id_jabatan` int(11) NOT NULL AUTO_INCREMENT,
   `nama_jabatan` varchar(120) NOT NULL,
   `gaji_pokok` varchar(50) NOT NULL,
   `tj_transport` varchar(50) NOT NULL,
-  `uang_makan` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `uang_makan` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_jabatan`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `data_jabatan`
---
+/*Data for the table `data_jabatan` */
 
-INSERT INTO `data_jabatan` (`id_jabatan`, `nama_jabatan`, `gaji_pokok`, `tj_transport`, `uang_makan`) VALUES
-(1, 'HRD', '4000000', '600000', '400000'),
-(2, 'Staff Marketing', '2500000', '300000', '200000'),
-(3, 'Admin', '2200000', '300000', '200000'),
-(4, 'Sales', '2500000', '300000', '200000');
+insert  into `data_jabatan`(`id_jabatan`,`nama_jabatan`,`gaji_pokok`,`tj_transport`,`uang_makan`) values 
+(1,'Direktur','3000000','500000','300000'),
+(2,'Admin','2000000','200000','200000'),
+(3,'Teknisi','2200000','300000','300000'),
+(4,'Sales','1800000','300000','250000');
 
--- --------------------------------------------------------
+/*Table structure for table `data_kehadiran` */
 
---
--- Table structure for table `data_kehadiran`
---
+DROP TABLE IF EXISTS `data_kehadiran`;
 
 CREATE TABLE `data_kehadiran` (
-  `id_kehadiran` int(11) NOT NULL,
+  `id_kehadiran` int(11) NOT NULL AUTO_INCREMENT,
   `bulan` varchar(15) NOT NULL,
   `nik` varchar(16) NOT NULL,
   `nama_pegawai` varchar(100) NOT NULL,
@@ -60,25 +50,18 @@ CREATE TABLE `data_kehadiran` (
   `nama_jabatan` varchar(50) NOT NULL,
   `hadir` int(11) NOT NULL,
   `sakit` int(11) NOT NULL,
-  `alpha` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `alpha` int(11) NOT NULL,
+  PRIMARY KEY (`id_kehadiran`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `data_kehadiran`
---
+/*Data for the table `data_kehadiran` */
 
-INSERT INTO `data_kehadiran` (`id_kehadiran`, `bulan`, `nik`, `nama_pegawai`, `jenis_kelamin`, `nama_jabatan`, `hadir`, `sakit`, `alpha`) VALUES
-(1, '012021', '0987654321', 'Dodi', 'Laki-Laki', 'Staff Marketing', 24, 0, 0),
-(2, '012021', '123456789', 'Fauzi', 'Laki-Laki', 'Admin', 22, 0, 1);
+/*Table structure for table `data_pegawai` */
 
--- --------------------------------------------------------
-
---
--- Table structure for table `data_pegawai`
---
+DROP TABLE IF EXISTS `data_pegawai`;
 
 CREATE TABLE `data_pegawai` (
-  `id_pegawai` int(11) NOT NULL,
+  `id_pegawai` int(11) NOT NULL AUTO_INCREMENT,
   `nik` varchar(16) NOT NULL,
   `nama_pegawai` varchar(100) NOT NULL,
   `username` varchar(120) NOT NULL,
@@ -88,126 +71,29 @@ CREATE TABLE `data_pegawai` (
   `tanggal_masuk` date NOT NULL,
   `status` varchar(50) NOT NULL,
   `photo` varchar(100) NOT NULL,
-  `hak_akses` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `hak_akses` int(11) NOT NULL,
+  PRIMARY KEY (`id_pegawai`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `data_pegawai`
---
+/*Data for the table `data_pegawai` */
 
-INSERT INTO `data_pegawai` (`id_pegawai`, `nik`, `nama_pegawai`, `username`, `password`, `jenis_kelamin`, `jabatan`, `tanggal_masuk`, `status`, `photo`, `hak_akses`) VALUES
-(1, '123456789', 'Fauzi', 'fauzi', '0bd9897bf12294ce35fdc0e21065c8a7', 'Laki-Laki', 'Admin', '2020-12-26', 'Karyawan Tetap', 'pegawai-210101-a7ca89f5fc.png', 1),
-(2, '0987654321', 'Dodi', 'dodi', 'dc82a0e0107a31ba5d137a47ab09a26b', 'Laki-Laki', 'Staff Marketing', '2021-01-02', 'Karyawan Tidak Tetap', 'pegawai-210101-9847084dc8.png', 2);
+insert  into `data_pegawai`(`id_pegawai`,`nik`,`nama_pegawai`,`username`,`password`,`jenis_kelamin`,`jabatan`,`tanggal_masuk`,`status`,`photo`,`hak_akses`) values 
+(4,'123456789','Admin','Admin','Admin','laki-laki','Admin','2022-12-15','','',1);
 
--- --------------------------------------------------------
+/*Table structure for table `potongan_gaji` */
 
---
--- Table structure for table `hak_akses`
---
-
-CREATE TABLE `hak_akses` (
-  `id` int(11) NOT NULL,
-  `keterangan` varchar(50) NOT NULL,
-  `hak_akses` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `hak_akses`
---
-
-INSERT INTO `hak_akses` (`id`, `keterangan`, `hak_akses`) VALUES
-(1, 'admin', 1),
-(2, 'pegawai', 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `potongan_gaji`
---
+DROP TABLE IF EXISTS `potongan_gaji`;
 
 CREATE TABLE `potongan_gaji` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `potongan` varchar(120) NOT NULL,
-  `jml_potongan` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `jml_potongan` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `potongan_gaji`
---
+/*Data for the table `potongan_gaji` */
 
-INSERT INTO `potongan_gaji` (`id`, `potongan`, `jml_potongan`) VALUES
-(1, 'Alpha', 100000),
-(2, 'Sakit', 0);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `data_jabatan`
---
-ALTER TABLE `data_jabatan`
-  ADD PRIMARY KEY (`id_jabatan`);
-
---
--- Indexes for table `data_kehadiran`
---
-ALTER TABLE `data_kehadiran`
-  ADD PRIMARY KEY (`id_kehadiran`);
-
---
--- Indexes for table `data_pegawai`
---
-ALTER TABLE `data_pegawai`
-  ADD PRIMARY KEY (`id_pegawai`);
-
---
--- Indexes for table `hak_akses`
---
-ALTER TABLE `hak_akses`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `potongan_gaji`
---
-ALTER TABLE `potongan_gaji`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `data_jabatan`
---
-ALTER TABLE `data_jabatan`
-  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `data_kehadiran`
---
-ALTER TABLE `data_kehadiran`
-  MODIFY `id_kehadiran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `data_pegawai`
---
-ALTER TABLE `data_pegawai`
-  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `hak_akses`
---
-ALTER TABLE `hak_akses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `potongan_gaji`
---
-ALTER TABLE `potongan_gaji`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
