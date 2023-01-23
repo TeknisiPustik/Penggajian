@@ -93,13 +93,14 @@ class Data_Absensi extends CI_Controller
 		$this->load->view('templates_admin/footer');
 	}
 
-	public function update_absensi($nik)
+	public function update_absensi()
 	{
 
 		$data['title'] = "Form Edit Absensi";
-		$where = array('nik' => $nik);
+		// $where = array('id_kehadiran' => $id);
 
-		$bulantahun = $this->uri->segment(4);
+		$bulantahun = $this->uri->segment(4
+	 );
 		$a = str_split($bulantahun, 2);
 
 		$data['bulan'] = $a[0];
@@ -117,38 +118,41 @@ class Data_Absensi extends CI_Controller
 		$this->load->view('templates_admin/footer');
 	}
 
-	public function update_absensi_aksi()
+	public function update_absensi_aksi($id)
 	{
-		if ($this->input->post('submit', TRUE) == 'submit') {
-			$post = $this->input->post();
+		$where = array('id_kehadiran' => $id);
 
-			foreach ($post['bulan'] as $key => $value) {
-				if ($post['bulan'][$key] != '' || $post['nik'][$key] != '') {
-					$simpan[] = array(
-						'bulan'			=> $post['bulan'][$key],
-						'nik'			=> $post['nik'][$key],
-						'nama_pegawai'	=> $post['nama_pegawai'][$key],
-						'jenis_kelamin'	=> $post['jenis_kelamin'][$key],
-						'nama_jabatan'	=> $post['nama_jabatan'][$key],
-						'hadir'			=> $post['hadir'][$key],
-						'sakit'			=> $post['sakit'][$key],
-						'alpha'			=> $post['alpha'][$key],
-					);
-				}
-			}
+		if ($this->form_validation->run() == FALSE) {
+			$this->update_absensi();
+		} else {
+			$id				= $this->input->post('id_kehadiran');
+			$bulan			= $this->input->post('bulan');
+			$nik			= $this->input->post('nik');
+			$nama_pegawai	= $this->input->post('nama_pegawai');
+			$jenis_kelamin	= $this->input->post('jenis_kelamin');
+			$jabatan		= $this->input->post('nama_jabatan');
+			$hadir			= $this->input->post('hadir');
+			$sakit			= $this->input->post('sakit');
+			$alpha			= $this->input->post('alpha');
 
-			$where = array(
-				'nik' => $nik
+			$data = array(
+				'bulan' 		=> $bulan,
+				'nik'			=> $nik,
+				'nama_pegawai' 	=> $nama_pegawai,
+				'jenis_kelamin'	=> $jenis_kelamin,
+				'nama_jabatan'	=> $jabatan,
+				'hadir'			=> $hadir,
+				'sakit'			=> $sakit,
+				'alpha'			=> $alpha,
 
 			);
-			$this->ModelPenggajian->update_data('data_kehadiran', $simpan, $where);
-			$this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-				<strong>Data berhasil ditambahkan!</strong>
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button>
-				</div>');
-			redirect('admin/data_absensi');
+	
+
+		var_dump($where);
+		// var_dump($bulantahun);
+
+		// $this->ModelPenggajian->update_data('data_kehadiran', $data, $where);
+		// redirect('admin/update_absensi/' .$bulantahun);
 		}
 	}
 }
